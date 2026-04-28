@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automatisations commerciales IA - Constellation Synapse</title>
+  <link rel="icon" type="image/png" href="/Users/augustindesbois/Desktop/Landing Page Perso/assets/images/Gemini_Generated_Image_j5w88bj5w88bj5w8.png">
+  <style>
+    @font-face {
+      font-family: "FK Grotesk Mono";
+      src: url("/Users/augustindesbois/Desktop/Landing Page Perso/assets/fonts/FKGroteskSemiMonoTrial-Regular.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --off-black: #060d1c;
+      --inky-blue: #0d1e3a;
+      --peacock: #1a3260;
+      --true-turquoise: #20808d;
+      --plex-blue: #2e8e8a;
+      --sky: #b3c8e6;
+      --paper: #fbfaf4;
+      --paper-deep: #f2efe6;
+      --ecru: #e4e3d4;
+      --apricot: #ffd2a6;
+      --terra-cotta: #a84b2f;
+      --boysenberry: #944454;
+      --white: #ffffff;
+      --text: #0a1832;
+      --text-soft: #3d5a8a;
+      --text-muted: #6b82a8;
+      --line: rgba(13, 30, 58, 0.12);
+      --line-strong: rgba(26, 50, 96, 0.24);
+      --shadow-soft: 0 18px 44px rgba(6, 13, 28, 0.08);
+      --shadow-strong: 0 28px 72px rgba(6, 13, 28, 0.28);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+      --container: 1180px;
+      --grid-size: 82px;
+      --mono: "FK Grotesk Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: "Avenir Next", Avenir, "Helvetica Neue", "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      font-family: var(--sans);
+      background:
+        linear-gradient(180deg, var(--off-black) 0, var(--off-black) 560px, var(--paper) 560px, var(--paper) 100%);
+      color: var(--text);
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .page-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 30;
+      padding: 18px 24px;
+      pointer-events: none;
+    }
+
+    .page-nav-inner {
+      max-width: var(--container);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 13px 16px;
+      border: 1px solid rgba(179, 200, 230, 0.14);
+      background: rgba(6, 13, 28, 0.66);
+      backdrop-filter: blur(20px);
+      border-radius: 999px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+      pointer-events: auto;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--paper);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-radius: 9px;
+      border: 1px solid rgba(179, 200, 230, 0.2);
+      background: #000;
+      box-shadow: 0 0 28px rgba(32, 128, 141, 0.2);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 82% 64%;
+      transform: scale(2.08);
+      transform-origin: 82% 64%;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      padding: 8px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      color: rgba(251, 250, 244, 0.72);
+      transition: background-color 0.24s ease, color 0.24s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background: rgba(179, 200, 230, 0.13);
+      color: var(--paper);
+    }
+
+    .wrap {
+      width: min(var(--container), calc(100vw - 48px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      color: var(--paper);
+      min-height: 100svh;
+      padding: 122px 0 58px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(180deg, rgba(6, 12, 26, 0.96) 0%, rgba(10, 22, 48, 0.98) 72%, rgba(15, 32, 72, 0.96) 100%);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 78% 38%, rgba(32, 128, 141, 0.2), transparent 24%),
+        radial-gradient(circle at 60% 70%, rgba(255, 210, 166, 0.12), transparent 28%),
+        linear-gradient(90deg, rgba(6, 13, 28, 0.18), rgba(6, 13, 28, 0.04) 45%, rgba(6, 13, 28, 0.34));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(179, 200, 230, 0.058) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(179, 200, 230, 0.043) 1px, transparent 1px);
+      background-size: var(--grid-size) var(--grid-size);
+      mask-image: linear-gradient(180deg, transparent, #000 14%, #000 74%, transparent);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .constellation-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: minmax(0, 0.68fr) minmax(280px, 0.32fr);
+      gap: 46px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+    }
+
+    .hero-spatial-note {
+      align-self: stretch;
+      min-height: 420px;
+      position: relative;
+    }
+
+    .hero-spatial-note::before {
+      content: "";
+      position: absolute;
+      inset: 4% -10% -8% -4%;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 46% 40%, rgba(32, 128, 141, 0.13), transparent 46%),
+        radial-gradient(circle at 70% 68%, rgba(255, 210, 166, 0.08), transparent 42%);
+      filter: blur(10px);
+      opacity: 0.82;
+    }
+
+    .eyebrow,
+    .section-label,
+    .card-label,
+    .metric-label,
+    .priority-label,
+    .timeline-time,
+    .score-note,
+    .footer-note {
+      font-family: var(--mono);
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      font-size: 0.72rem;
+      color: rgba(251, 250, 244, 0.68);
+    }
+
+    .eyebrow::before,
+    .section-label::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.34;
+    }
+
+    h1,
+    h2,
+    h3 {
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 11ch;
+      font-size: 5.7rem;
+      line-height: 0.94;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      max-width: 44ch;
+      font-size: 1.18rem;
+      line-height: 1.58;
+      color: rgba(251, 250, 244, 0.82);
+      margin-bottom: 18px;
+    }
+
+    .hero-intro {
+      max-width: 46ch;
+      color: rgba(179, 200, 230, 0.9);
+      font-size: 0.98rem;
+      line-height: 1.68;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(179, 200, 230, 0.18);
+      transition: transform 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--true-turquoise), var(--plex-blue));
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    .button.secondary {
+      color: var(--paper);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .surface {
+      position: relative;
+      margin-top: -6px;
+      background:
+        linear-gradient(180deg, rgba(251, 250, 244, 0.96), rgba(251, 250, 244, 0.96)),
+        var(--paper);
+    }
+
+    .surface::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(26, 50, 96, 0.18), transparent);
+      z-index: 1;
+    }
+
+    .surface::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(13, 30, 58, 0.038) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(13, 30, 58, 0.026) 1px, transparent 1px);
+      background-size: var(--grid-size) var(--grid-size);
+      mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), #000 12%, #000 88%, rgba(0, 0, 0, 0.62));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .surface > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      scroll-margin-top: 138px;
+    }
+
+    .section-block {
+      padding: 78px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.64fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 32px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      font-size: 0.72rem;
+      color: var(--true-turquoise);
+    }
+
+    h2 {
+      max-width: 14ch;
+      font-size: 3rem;
+      line-height: 1.04;
+      font-weight: 700;
+    }
+
+    .section-kicker {
+      color: var(--text-soft);
+      line-height: 1.75;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .glance-card,
+    .automation-card,
+    .score-card,
+    .priority-card,
+    .script-card,
+    .detail-card {
+      padding: 26px;
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 14px;
+      font-size: 0.68rem;
+      color: var(--true-turquoise);
+    }
+
+    .glance-card h3,
+    .automation-card h3,
+    .priority-card h3,
+    .script-card h3 {
+      font-size: 1.26rem;
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    .glance-card p,
+    .automation-card p,
+    .detail-card p,
+    .priority-card p,
+    .script-card p,
+    .score-card p {
+      color: var(--text-soft);
+    }
+
+    .featured {
+      background: linear-gradient(180deg, rgba(13, 30, 58, 0.96), rgba(26, 50, 96, 0.92));
+      color: var(--paper);
+      border-color: rgba(179, 200, 230, 0.14);
+    }
+
+    .featured .card-label {
+      color: rgba(179, 200, 230, 0.78);
+    }
+
+    .featured p,
+    .featured li {
+      color: rgba(251, 250, 244, 0.82);
+    }
+
+    .reading-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .reading-list li {
+      list-style: none;
+      position: relative;
+      padding-left: 18px;
+      color: var(--text-soft);
+    }
+
+    .reading-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.72em;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.54;
+    }
+
+    .signal-strip {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .signal-card {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+    }
+
+    .signal-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.14rem;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .signal-card span {
+      display: block;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .automation-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .automation-layout.reverse {
+      grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    }
+
+    .automation-card {
+      display: grid;
+      gap: 18px;
+    }
+
+    .automation-card h3 {
+      font-size: 2rem;
+      line-height: 1.08;
+      margin-bottom: 0;
+    }
+
+    .automation-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-pill {
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(179, 200, 230, 0.18);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+    }
+
+    .metric-label {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text-muted);
+      font-size: 0.66rem;
+    }
+
+    .metric-pill strong {
+      display: block;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .steps-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 13px;
+      align-items: start;
+      padding: 14px 0 0;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity 0.48s ease, transform 0.48s ease, border-color 0.28s ease;
+    }
+
+    #radar.is-visible .step-row,
+    #brief.is-visible .step-row {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    #radar.is-visible .step-row:nth-child(1),
+    #brief.is-visible .step-row:nth-child(1) { transition-delay: 0.12s; }
+    #radar.is-visible .step-row:nth-child(2),
+    #brief.is-visible .step-row:nth-child(2) { transition-delay: 0.22s; }
+    #radar.is-visible .step-row:nth-child(3),
+    #brief.is-visible .step-row:nth-child(3) { transition-delay: 0.32s; }
+    #radar.is-visible .step-row:nth-child(4),
+    #brief.is-visible .step-row:nth-child(4) { transition-delay: 0.42s; }
+
+    .step-index {
+      width: 32px;
+      height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(32, 128, 141, 0.08);
+      color: var(--true-turquoise);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+
+    .step-row strong {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1.25;
+    }
+
+    .step-row span:last-child {
+      display: block;
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .detail-card {
+      background:
+        linear-gradient(180deg, rgba(251, 250, 244, 0.98), rgba(255, 255, 255, 0.88));
+    }
+
+    .visual-shell {
+      min-height: 100%;
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+      background:
+        linear-gradient(180deg, rgba(13, 30, 58, 0.96), rgba(26, 50, 96, 0.92));
+      color: var(--paper);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .visual-shell::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -80px auto;
+      width: 260px;
+      height: 260px;
+      background: linear-gradient(135deg, rgba(32, 128, 141, 0.22), rgba(255, 210, 166, 0.12));
+      transform: rotate(18deg);
+      border-radius: 42px;
+      pointer-events: none;
+    }
+
+    .visual-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .visual-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .visual-title h3 {
+      max-width: 16ch;
+      color: var(--paper);
+      font-size: 1.52rem;
+      line-height: 1.12;
+    }
+
+    .visual-badge {
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(179, 200, 230, 0.16);
+      color: rgba(251, 250, 244, 0.76);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      white-space: nowrap;
+    }
+
+    .radar-visual {
+      min-height: 320px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .radar-core {
+      width: 64%;
+      aspect-ratio: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(179, 200, 230, 0.24);
+      background:
+        repeating-radial-gradient(circle, transparent 0 44px, rgba(179, 200, 230, 0.12) 45px 46px),
+        conic-gradient(from 30deg, rgba(32, 128, 141, 0.28), transparent 34%, rgba(255, 210, 166, 0.18), transparent 66%, rgba(32, 128, 141, 0.22));
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 0 0 70px rgba(32, 128, 141, 0.08);
+    }
+
+    .radar-core::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: conic-gradient(from 0deg, rgba(32, 128, 141, 0.68), rgba(32, 128, 141, 0.06) 16%, transparent 32%);
+      opacity: 0.72;
+      mix-blend-mode: screen;
+      animation: radarSweep 4.6s linear infinite;
+    }
+
+    .radar-core::after {
+      content: "";
+      position: absolute;
+      inset: 44%;
+      border-radius: inherit;
+      border: 1px solid rgba(179, 200, 230, 0.46);
+      animation: radarPulse 3.2s ease-out infinite;
+    }
+
+    .radar-core strong {
+      width: 82px;
+      height: 82px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(6, 13, 28, 0.76);
+      border: 1px solid rgba(179, 200, 230, 0.24);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--paper);
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 0 38px rgba(32, 128, 141, 0.28);
+    }
+
+    .node {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--apricot);
+      box-shadow: 0 0 22px rgba(255, 210, 166, 0.52);
+      opacity: 0.42;
+      animation: nodePing 4.6s ease-in-out infinite;
+    }
+
+    .node::after {
+      content: "";
+      position: absolute;
+      inset: -7px;
+      border-radius: inherit;
+      border: 1px solid currentColor;
+      opacity: 0;
+      animation: nodeRing 4.6s ease-in-out infinite;
+    }
+
+    .node:nth-child(2) { top: 24%; left: 70%; color: var(--apricot); animation-delay: 0.25s; }
+    .node:nth-child(3) { top: 42%; left: 18%; background: var(--true-turquoise); color: var(--true-turquoise); animation-delay: 1.25s; }
+    .node:nth-child(4) { top: 72%; left: 60%; color: var(--apricot); animation-delay: 2.3s; }
+    .node:nth-child(5) { top: 66%; left: 28%; background: var(--sky); color: var(--sky); animation-delay: 3.25s; }
+    .node:nth-child(2)::after { animation-delay: 0.25s; }
+    .node:nth-child(3)::after { animation-delay: 1.25s; }
+    .node:nth-child(4)::after { animation-delay: 2.3s; }
+    .node:nth-child(5)::after { animation-delay: 3.25s; }
+
+    .pipeline {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .pipeline::before {
+      content: "";
+      position: absolute;
+      top: 22px;
+      bottom: 22px;
+      left: 28px;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(179, 200, 230, 0.28), transparent);
+      pointer-events: none;
+    }
+
+    .pipeline::after {
+      content: "";
+      position: absolute;
+      left: 24px;
+      top: 20px;
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--apricot);
+      box-shadow: 0 0 22px rgba(255, 210, 166, 0.58);
+      animation: pipelineFlow 3.8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .pipeline-step {
+      display: grid;
+      grid-template-columns: 38px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(179, 200, 230, 0.13);
+      opacity: 0;
+      overflow: hidden;
+      position: relative;
+      transform: translateY(12px);
+      transition: opacity 0.48s ease, transform 0.48s ease, border-color 0.28s ease, background-color 0.28s ease;
+    }
+
+    .pipeline-step::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.09), transparent);
+      transform: translateX(-120%);
+      animation: pipelineShimmer 4.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    #brief.is-visible .pipeline-step {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #brief.is-visible .pipeline-step:nth-child(1) { transition-delay: 0.08s; }
+    #brief.is-visible .pipeline-step:nth-child(2) { transition-delay: 0.18s; }
+    #brief.is-visible .pipeline-step:nth-child(3) { transition-delay: 0.28s; }
+    #brief.is-visible .pipeline-step:nth-child(4) { transition-delay: 0.38s; }
+    #brief.is-visible .pipeline-step:nth-child(5) { transition-delay: 0.48s; }
+
+    .pipeline-step:nth-child(1)::after { animation-delay: 0s; }
+    .pipeline-step:nth-child(2)::after { animation-delay: 0.22s; }
+    .pipeline-step:nth-child(3)::after { animation-delay: 0.44s; }
+    .pipeline-step:nth-child(4)::after { animation-delay: 0.66s; }
+    .pipeline-step:nth-child(5)::after { animation-delay: 0.88s; }
+
+    #brief.is-visible .pipeline-step:nth-child(4),
+    #brief.is-visible .pipeline-step:nth-child(5) {
+      border-color: rgba(255, 210, 166, 0.28);
+      background: rgba(255, 255, 255, 0.085);
+    }
+
+    .pipeline-step span:first-child {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(32, 128, 141, 0.24);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+    }
+
+    .pipeline-step strong {
+      display: block;
+      color: var(--paper);
+      line-height: 1.2;
+    }
+
+    .pipeline-step small {
+      color: rgba(251, 250, 244, 0.58);
+    }
+
+    .pipeline-step em {
+      font-style: normal;
+      color: var(--apricot);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+      box-shadow: var(--shadow-soft);
+      background: rgba(13, 30, 58, 0.12);
+    }
+
+    .timeline-phase {
+      padding: 24px;
+      background: rgba(255, 255, 255, 0.76);
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s ease, transform 0.5s ease, background-color 0.28s ease;
+    }
+
+    #salon.is-visible .timeline-phase {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #salon.is-visible .timeline-phase:nth-child(1) { transition-delay: 0.08s; }
+    #salon.is-visible .timeline-phase:nth-child(2) { transition-delay: 0.2s; }
+    #salon.is-visible .timeline-phase:nth-child(3) { transition-delay: 0.32s; }
+
+    .timeline-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-head strong {
+      color: var(--text);
+    }
+
+    .timeline-time {
+      color: var(--text-muted);
+      font-size: 0.66rem;
+      white-space: nowrap;
+    }
+
+    .timeline-items {
+      display: grid;
+      gap: 13px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 10px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(9px);
+      transition: opacity 0.42s ease, transform 0.42s ease;
+    }
+
+    #salon.is-visible .timeline-item {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #salon.is-visible .timeline-item:nth-child(1) { transition-delay: 0.24s; }
+    #salon.is-visible .timeline-item:nth-child(2) { transition-delay: 0.34s; }
+    #salon.is-visible .timeline-item:nth-child(3) { transition-delay: 0.44s; }
+
+    .timeline-item span:first-child {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: rgba(32, 128, 141, 0.09);
+      color: var(--true-turquoise);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+    }
+
+    .timeline-item strong {
+      display: block;
+      line-height: 1.25;
+      margin-bottom: 2px;
+    }
+
+    .timeline-item small {
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    .kpi-strip {
+      margin-top: 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .kpi {
+      padding: 18px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.46s ease, transform 0.46s ease;
+    }
+
+    #salon.is-visible .kpi {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #salon.is-visible .kpi:nth-child(1) { transition-delay: 0.46s; }
+    #salon.is-visible .kpi:nth-child(2) { transition-delay: 0.56s; }
+    #salon.is-visible .kpi:nth-child(3) { transition-delay: 0.66s; }
+
+    .kpi strong {
+      display: block;
+      color: var(--true-turquoise);
+      font-size: 1.42rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .kpi span {
+      color: var(--text-soft);
+    }
+
+    .score-shell {
+      display: grid;
+      gap: 12px;
+    }
+
+    .score-row {
+      display: grid;
+      grid-template-columns: minmax(190px, 1.2fr) repeat(5, minmax(80px, 0.7fr)) 78px;
+      gap: 12px;
+      align-items: center;
+      padding: 16px 18px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(13, 30, 58, 0.08);
+      background: rgba(255, 255, 255, 0.74);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .score-row.header {
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      padding-top: 0;
+      padding-bottom: 0;
+      color: var(--text-muted);
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .score-row.winner {
+      border-color: rgba(32, 128, 141, 0.28);
+      background:
+        linear-gradient(180deg, rgba(179, 200, 230, 0.44), rgba(255, 255, 255, 0.9));
+    }
+
+    .score-name small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--true-turquoise);
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      text-transform: uppercase;
+    }
+
+    .score-name strong {
+      display: block;
+      line-height: 1.22;
+    }
+
+    .score-cell {
+      display: grid;
+      gap: 6px;
+      justify-items: center;
+    }
+
+    .score-bar {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(13, 30, 58, 0.1);
+    }
+
+    .score-fill {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--true-turquoise);
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .score-row.is-visible .score-fill {
+      width: var(--w);
+    }
+
+    .score-cell span {
+      color: var(--text-soft);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+    }
+
+    .score-final {
+      color: var(--text);
+      font-size: 1.62rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .score-row.winner .score-final {
+      color: var(--true-turquoise);
+      font-size: 1.9rem;
+    }
+
+    .score-note {
+      margin-top: 12px;
+      color: var(--text-muted);
+      font-size: 0.68rem;
+    }
+
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .priority-card {
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .priority-card.primary {
+      background:
+        linear-gradient(180deg, rgba(13, 30, 58, 0.96), rgba(26, 50, 96, 0.92));
+      color: var(--paper);
+      border-color: rgba(179, 200, 230, 0.14);
+    }
+
+    .priority-label {
+      color: var(--true-turquoise);
+      font-size: 0.68rem;
+    }
+
+    .priority-card.primary .priority-label {
+      color: var(--apricot);
+    }
+
+    .priority-card.primary p {
+      color: rgba(251, 250, 244, 0.78);
+    }
+
+    .priority-meta {
+      width: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(179, 200, 230, 0.16);
+      color: var(--text-soft);
+      font-size: 0.86rem;
+    }
+
+    .priority-card.primary .priority-meta {
+      color: var(--paper);
+      border: 1px solid rgba(179, 200, 230, 0.18);
+    }
+
+    .script-card {
+      margin-top: 22px;
+      background:
+        linear-gradient(180deg, rgba(251, 250, 244, 0.98), rgba(242, 239, 230, 0.84));
+      border-left: 4px solid var(--terra-cotta);
+    }
+
+    .script-card p {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
+    .section-block[data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .section-block[data-reveal].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .footer-note {
+      padding: 26px 0 42px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+
+    @keyframes radarSweep {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes radarPulse {
+      0% {
+        inset: 44%;
+        opacity: 0.54;
+      }
+      100% {
+        inset: 8%;
+        opacity: 0;
+      }
+    }
+
+    @keyframes nodePing {
+      0%, 100% {
+        opacity: 0.36;
+        transform: scale(1);
+      }
+      8%, 18% {
+        opacity: 1;
+        transform: scale(1.35);
+      }
+      34% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes nodeRing {
+      0%, 10% {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      18% {
+        opacity: 0.66;
+      }
+      34%, 100% {
+        opacity: 0;
+        transform: scale(1.75);
+      }
+    }
+
+    @keyframes pipelineFlow {
+      0% {
+        top: 20px;
+        opacity: 0;
+      }
+      8%, 84% {
+        opacity: 1;
+      }
+      100% {
+        top: calc(100% - 30px);
+        opacity: 0;
+      }
+    }
+
+    @keyframes pipelineShimmer {
+      0%, 58% { transform: translateX(-120%); }
+      78%, 100% { transform: translateX(120%); }
+    }
+
+    @media (max-width: 1100px) {
+      h1 {
+        font-size: 4.9rem;
+      }
+
+      .section-head,
+      .automation-layout,
+      .automation-layout.reverse {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-copy {
+        max-width: 720px;
+      }
+
+      .hero-spatial-note {
+        display: none;
+      }
+
+      .signal-strip,
+      .timeline-grid,
+      .priority-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .score-row {
+        grid-template-columns: minmax(180px, 1fr) repeat(3, minmax(70px, 0.7fr)) 72px;
+      }
+
+      .score-row .score-cell:nth-of-type(n+5),
+      .score-row.header span:nth-of-type(5),
+      .score-row.header span:nth-of-type(6) {
+        display: none;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .page-nav {
+        padding: 14px;
+      }
+
+      .page-nav-inner {
+        border-radius: 24px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: visible;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .nav-link {
+        padding: 7px 10px;
+        font-size: 0.76rem;
+        white-space: nowrap;
+      }
+
+      .hero {
+        padding: 132px 0 36px;
+        min-height: 100svh;
+      }
+
+      .section {
+        scroll-margin-top: 190px;
+      }
+
+      .wrap {
+        width: min(var(--container), calc(100vw - 36px));
+      }
+
+      h1 {
+        max-width: 13ch;
+        font-size: 3rem;
+        line-height: 1;
+        margin-bottom: 16px;
+      }
+
+      .hero-subtitle {
+        font-size: 1.08rem;
+        line-height: 1.5;
+        margin-bottom: 14px;
+      }
+
+      .hero-intro {
+        line-height: 1.58;
+        margin-bottom: 24px;
+      }
+
+      h2 {
+        font-size: 2.22rem;
+      }
+
+      .grid-3,
+      .grid-2,
+      .signal-strip,
+      .automation-meta,
+      .timeline-grid,
+      .kpi-strip,
+      .priority-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .constellation-canvas {
+        opacity: 0.72;
+      }
+
+      .score-shell {
+        overflow-x: auto;
+        padding-bottom: 8px;
+      }
+
+      .score-row {
+        min-width: 680px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .section-block {
+        padding: 62px 0;
+      }
+
+      .glance-card,
+      .automation-card,
+      .score-card,
+      .priority-card,
+      .script-card,
+      .detail-card,
+      .visual-shell,
+      .timeline-phase {
+        padding: 20px;
+      }
+
+      h1 {
+        max-width: 12ch;
+        font-size: 2.64rem;
+      }
+
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+
+      .visual-title {
+        display: grid;
+      }
+
+      .radar-visual {
+        min-height: 250px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-nav" aria-label="Navigation principale">
+    <div class="page-nav-inner">
+      <a class="brand" href="#hero" aria-label="Retour au début">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="/Users/augustindesbois/Desktop/SY-synapse.png" alt="">
+        </span>
+        <span>Synapse Automatisations</span>
+      </a>
+      <div class="nav-links">
+        <a class="nav-link active" href="#lecture">Synthèse</a>
+        <a class="nav-link" href="#radar">Radar</a>
+        <a class="nav-link" href="#brief">Brief ROI</a>
+        <a class="nav-link" href="#salon">Salon</a>
+        <a class="nav-link" href="#scoring">Scoring</a>
+        <a class="nav-link" href="#decision">Décision</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero section" id="hero">
+    <canvas class="constellation-canvas" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Synapse Développement - IA commerciale</div>
+          <h1>Accélérer le cycle commercial par l'IA métier</h1>
+          <p class="hero-subtitle">Trois automatisations pour détecter les bons comptes, préparer les rendez-vous et relancer les événements sans perdre le contrôle commercial.</p>
+          <p class="hero-intro">Signaux d'intention, diagnostic ROI, suivi post-salon : chaque système reste supervisé par l'humain et mesuré sur un effet commercial visible.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#lecture">Lire l'essentiel</a>
+            <a class="button secondary" href="#scoring">Voir le scoring</a>
+          </div>
+        </div>
+        <div class="hero-spatial-note" aria-hidden="true"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="surface">
+    <section class="section section-block" id="lecture" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Lecture rapide</div>
+            <h2>L'essentiel en 90 secondes</h2>
+          </div>
+          <p class="section-kicker">Le redesign transforme la présentation en support de décision : comprendre vite les trois leviers, comparer leur faisabilité, puis choisir l'automatisation à tester en premier.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="glance-card card">
+            <span class="card-label">01 - Prospection</span>
+            <h3>Radar de comptes à potentiel IA</h3>
+            <p>Surveille les signaux faibles et repère les PME/ETI qui entrent en réflexion IA avant qu'elles formulent une demande.</p>
+          </article>
+          <article class="glance-card card featured">
+            <span class="card-label">02 - Qualification</span>
+            <h3>Brief ROI pré-rendez-vous</h3>
+            <p>L'automatisation prioritaire : un diagnostic d'une page, généré avant chaque RDV, fondé sur les cas Synapse déjà déployés.</p>
+            <ul class="reading-list">
+              <li>MVP testable en 48h.</li>
+              <li>Impact direct sur la conversion RDV vers proposition.</li>
+              <li>Démonstration interne de la méthode Synapse.</li>
+            </ul>
+          </article>
+          <article class="glance-card card">
+            <span class="card-label">03 - Événements</span>
+            <h3>Assistant salon + suivi post-événement</h3>
+            <p>Prépare les cibles, capture les échanges terrain, puis déclenche un suivi personnalisé sous quatre heures.</p>
+          </article>
+        </div>
+
+        <div class="signal-strip" aria-label="Indicateurs de synthèse">
+          <article class="signal-card">
+            <strong>10-15</strong>
+            <span>comptes qualifiés par semaine pour le radar.</span>
+          </article>
+          <article class="signal-card">
+            <strong>-60%</strong>
+            <span>temps de préparation visé avant les rendez-vous.</span>
+          </article>
+          <article class="signal-card">
+            <strong>+30%</strong>
+            <span>RDV bookés par salon avec un suivi systématique.</span>
+          </article>
+          <article class="signal-card">
+            <strong>8.6</strong>
+            <span>score de priorité du brief ROI pré-RDV.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-block" id="radar" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">01 - Prospection</div>
+            <h2>Radar de comptes à potentiel IA</h2>
+          </div>
+          <p class="section-kicker">Un agent de veille commerciale cherche les entreprises qui montrent déjà des signaux d'intention : recrutement data, projet de transformation, publications LinkedIn, actualité sectorielle.</p>
+        </div>
+
+        <div class="automation-layout">
+          <article class="automation-card card">
+            <span class="card-label">Objectif</span>
+            <h3>Détecter les comptes avant qu'ils cherchent un prestataire.</h3>
+            <p>Le radar réduit le temps passé à chercher des pistes et installe une prospection plus proactive sur les entreprises où l'angle IA est déjà crédible.</p>
+            <div class="automation-meta">
+              <div class="metric-pill">
+                <span class="metric-label">Volume</span>
+                <strong>10-15 comptes qualifiés / semaine</strong>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Gain</span>
+                <strong>-3h de prospection / commercial</strong>
+              </div>
+            </div>
+            <div class="steps-list">
+              <div class="step-row">
+                <span class="step-index">01</span>
+                <span><strong>Veille automatisée</strong><span>Job boards, news sectorielles et signaux LinkedIn.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">02</span>
+                <span><strong>Enrichissement compte</strong><span>Secteur, taille, décideurs et contexte récent.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">03</span>
+                <span><strong>Scoring IA triple</strong><span>Maturité IA, adéquation Synapse et urgence du signal.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">✓</span>
+                <span><strong>Validation humaine</strong><span>Rapport hebdomadaire, commercial valide puis envoie.</span></span>
+              </div>
+            </div>
+          </article>
+
+          <aside class="visual-shell card" aria-label="Visualisation du radar">
+            <div class="visual-title">
+              <h3>Veille continue des signaux d'intention IA</h3>
+              <span class="visual-badge">Haut de funnel</span>
+            </div>
+            <div class="radar-visual" aria-hidden="true">
+              <div class="radar-core"><strong>Synapse</strong></div>
+              <span class="node"></span>
+              <span class="node"></span>
+              <span class="node"></span>
+              <span class="node"></span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-block" id="brief" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">02 - Qualification</div>
+            <h2>Brief ROI pré-rendez-vous</h2>
+          </div>
+          <p class="section-kicker">L'automatisation la plus immédiatement rentable : elle transforme chaque rendez-vous confirmé en entretien mieux préparé, plus concret, plus aligné avec les cas Synapse réels.</p>
+        </div>
+
+        <div class="automation-layout reverse">
+          <aside class="visual-shell card" aria-label="Pipeline du brief ROI">
+            <div class="visual-title">
+              <h3>Pipeline déclenché par le CRM</h3>
+              <span class="visual-badge">Priorité 1</span>
+            </div>
+            <div class="pipeline">
+              <div class="pipeline-step"><span>01</span><span><strong>RDV confirmé</strong><small>CRM vers agent activé</small></span><em>trigger</em></div>
+              <div class="pipeline-step"><span>02</span><span><strong>Collecte données</strong><small>Web, LinkedIn, actualités</small></span><em>input</em></div>
+              <div class="pipeline-step"><span>03</span><span><strong>Analyse IA</strong><small>Maturité, secteur, stack</small></span><em>score</em></div>
+              <div class="pipeline-step"><span>04</span><span><strong>Matching cas Synapse</strong><small>Base de déploiements réels</small></span><em>ROI</em></div>
+              <div class="pipeline-step"><span>✓</span><span><strong>Brief validé</strong><small>Commercial ajuste et utilise</small></span><em>humain</em></div>
+            </div>
+          </aside>
+
+          <article class="automation-card card">
+            <span class="card-label">Objectif</span>
+            <h3>Arriver en rendez-vous avec un diagnostic, pas un pitch générique.</h3>
+            <p>Pour chaque RDV confirmé, l'agent collecte les données publiques du prospect, évalue sa maturité IA, sélectionne le cas Synapse le plus proche et génère un brief d'une page avec estimation ROI intégrée.</p>
+            <div class="automation-meta">
+              <div class="metric-pill">
+                <span class="metric-label">Préparation</span>
+                <strong>-60% de temps de préparation</strong>
+              </div>
+              <div class="metric-pill">
+                <span class="metric-label">Conversion</span>
+                <strong>+15 pts RDV vers proposition</strong>
+              </div>
+            </div>
+            <div class="steps-list">
+              <div class="step-row">
+                <span class="step-index">CRM</span>
+                <span><strong>Déclencheur automatique</strong><span>RDV confirmé, agent activé sans action manuelle.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">IA</span>
+                <span><strong>Maturité IA évaluée</strong><span>Naïf, sensibilisé ou en cours de déploiement.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">ROI</span>
+                <span><strong>ROI estimé sur cas réels</strong><span>Exemple : -25 min/commercial avec un agent documentaire Synapse.</span></span>
+              </div>
+              <div class="step-row">
+                <span class="step-index">✓</span>
+                <span><strong>Validation humaine</strong><span>Le commercial ajuste et entre en RDV préparé.</span></span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-block" id="salon" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">03 - Événements</div>
+            <h2>Assistant salon et suivi post-événement</h2>
+          </div>
+          <p class="section-kicker">Le système prépare les rencontres, capture les échanges, puis transforme chaque conversation utile en séquence de suivi. L'enjeu est de ne plus perdre les contacts terrain.</p>
+        </div>
+
+        <div class="timeline-grid">
+          <article class="timeline-phase">
+            <div class="timeline-head">
+              <strong>Pré-salon</strong>
+              <span class="timeline-time">J-72h</span>
+            </div>
+            <div class="timeline-items">
+              <div class="timeline-item"><span>01</span><span><strong>Filtrage participants</strong><small>Analyse ICP Synapse contre la liste de l'événement.</small></span></div>
+              <div class="timeline-item"><span>02</span><span><strong>Fiches cibles générées</strong><small>10-15 profils avec angle de conversation recommandé.</small></span></div>
+              <div class="timeline-item"><span>03</span><span><strong>Amorce personnalisée</strong><small>Première phrase d'accroche par profil.</small></span></div>
+            </div>
+          </article>
+
+          <article class="timeline-phase">
+            <div class="timeline-head">
+              <strong>Pendant</strong>
+              <span class="timeline-time">J+0</span>
+            </div>
+            <div class="timeline-items">
+              <div class="timeline-item"><span>01</span><span><strong>Note vocale 30s</strong><small>Nom, poste, problème cité et niveau d'intérêt.</small></span></div>
+              <div class="timeline-item"><span>02</span><span><strong>Transcription Whisper</strong><small>La note devient un contact structuré en temps réel.</small></span></div>
+              <div class="timeline-item"><span>03</span><span><strong>Alimentation CRM</strong><small>Contact enrichi et qualifié automatiquement.</small></span></div>
+            </div>
+          </article>
+
+          <article class="timeline-phase">
+            <div class="timeline-head">
+              <strong>Post-salon</strong>
+              <span class="timeline-time">J+0 - J+30</span>
+            </div>
+            <div class="timeline-items">
+              <div class="timeline-item"><span>01</span><span><strong>Suivi J+0, &lt;4h</strong><small>Message ancré dans la conversation du salon.</small></span></div>
+              <div class="timeline-item"><span>02</span><span><strong>Relances J+3 et J+7</strong><small>Rappel neutre et cas Synapse sectoriel pertinent.</small></span></div>
+              <div class="timeline-item"><span>03</span><span><strong>Nurturing J+30</strong><small>Contenu sectoriel et prochain événement.</small></span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="kpi-strip" aria-label="KPI assistant salon">
+          <div class="kpi"><strong>&lt;4h</strong><span>délai premier suivi</span></div>
+          <div class="kpi"><strong>100%</strong><span>contacts relancés</span></div>
+          <div class="kpi"><strong>+30%</strong><span>RDV bookés par salon</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-block" id="scoring" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Analyse comparative</div>
+            <h2>Scoring de priorisation</h2>
+          </div>
+          <p class="section-kicker">Le brief ROI pré-RDV ressort comme le meilleur premier test : impact direct, faible dépendance technique, adoption simple par les commerciaux, cohérence forte avec le discours Synapse.</p>
+        </div>
+
+        <div class="score-shell" aria-label="Tableau de scoring">
+          <div class="score-row header">
+            <span></span>
+            <span>Impact</span>
+            <span>Faisabilité</span>
+            <span>Données</span>
+            <span>Adoption</span>
+            <span>Risque bas</span>
+            <span>Score</span>
+          </div>
+
+          <article class="score-row">
+            <div class="score-name"><small>01 - Radar</small><strong>Radar prospection IA</strong></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:80%"></span></div><span>8</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:60%"></span></div><span>6</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:70%"></span></div><span>7</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:70%"></span></div><span>7</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:60%; background: var(--terra-cotta);"></span></div><span>4</span></div>
+            <div class="score-final">6.4</div>
+          </article>
+
+          <article class="score-row winner">
+            <div class="score-name"><small>02 - Priorité 1</small><strong>Brief ROI pré-RDV</strong></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>9</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>9</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:80%"></span></div><span>8</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>9</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>2</span></div>
+            <div class="score-final">8.6</div>
+          </article>
+
+          <article class="score-row">
+            <div class="score-name"><small>03 - Salon</small><strong>Assistant salon + suivi</strong></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:80%"></span></div><span>8</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:80%"></span></div><span>8</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:80%"></span></div><span>8</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>9</span></div>
+            <div class="score-cell"><div class="score-bar"><span class="score-fill" style="--w:90%"></span></div><span>2</span></div>
+            <div class="score-final">8.2</div>
+          </article>
+        </div>
+        <p class="score-note">Pour le risque, le score bas est meilleur. Les barres affichent donc la lecture décisionnelle : plus la barre est longue, plus l'option est favorable.</p>
+      </div>
+    </section>
+
+    <section class="section section-block" id="decision" data-reveal>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-label">Décision</div>
+            <h2>Recommandation</h2>
+          </div>
+          <p class="section-kicker">La séquence recommandée privilégie un MVP rapide, visible et défendable commercialement, avant de passer aux systèmes plus dépendants des données et des événements.</p>
+        </div>
+
+        <div class="priority-grid">
+          <article class="priority-card primary card">
+            <span class="priority-label">Priorité 1 - Déployer maintenant</span>
+            <h3>Brief ROI pré-RDV</h3>
+            <p>Impact direct sur le cycle de vente. MVP testable en 48h. Démontre la méthodologie Synapse appliquée en interne, avec cohérence totale avec le discours commercial.</p>
+            <span class="priority-meta">Score 8.6 - MVP : Google Form + Claude API</span>
+          </article>
+
+          <article class="priority-card card">
+            <span class="priority-label">Priorité 2 - Prochain salon</span>
+            <h3>Assistant salon + suivi</h3>
+            <p>Testable sur le prochain événement Synapse. ROI visible en une journée. Preuve immédiate de la capacité à traiter des données non structurées.</p>
+            <span class="priority-meta">Score 8.2 - MVP : Tally + Whisper + n8n</span>
+          </article>
+
+          <article class="priority-card card">
+            <span class="priority-label">Priorité 3 - Q3 2026</span>
+            <h3>Radar de prospection IA</h3>
+            <p>L'automatisation la plus ambitieuse. Nécessite une calibration de l'ICP et des intégrations API stables. Fort potentiel à long terme sur le haut de funnel.</p>
+            <span class="priority-meta">Score 6.4 - MVP : Google Alerts + Clay</span>
+          </article>
+        </div>
+
+        <article class="script-card card">
+          <span class="card-label">Script - présentation CEO, 2 min</span>
+          <h3>Une formulation prête à présenter</h3>
+          <p>"J'ai analysé votre cycle commercial et identifié trois frictions que l'IA peut réduire sans changer votre équipe. La première : arriver en rendez-vous avec un diagnostic ROI structuré plutôt qu'un pitch générique. J'ai conçu un assistant qui produit ce brief en cinq minutes à partir des données publiques du prospect, basé sur vos cas déployés réels. La deuxième : ne pas perdre les contacts salon, avec un suivi personnalisé envoyé sous quatre heures, pas quarante-huit. La troisième : détecter les comptes en réflexion IA avant qu'ils cherchent eux-mêmes. Ces trois systèmes suivent exactement votre logique : données, analyse, action, mesure. Je veux vous montrer le MVP du brief pré-RDV aujourd'hui."</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="wrap footer-note">Version locale - direction artistique inspirée du mémo Synapse - Avril 2026</div>
+  </main>
+
+  <script>
+    const navLinks = document.querySelectorAll(".nav-link");
+    const sections = document.querySelectorAll(".section[id]");
+    const revealBlocks = document.querySelectorAll("[data-reveal]");
+    const scoreRows = document.querySelectorAll(".score-row:not(.header)");
+    const constellationCanvas = document.querySelector(".constellation-canvas");
+
+    function initConstellation(canvas) {
+      if (!canvas) return;
+
+      const hero = document.querySelector(".hero");
+      const ctx = canvas.getContext("2d");
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      const colors = [
+        { r: 32, g: 128, b: 141 },
+        { r: 46, g: 142, b: 138 },
+        { r: 179, g: 200, b: 230 },
+        { r: 255, g: 210, b: 166 }
+      ];
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let nodes = [];
+      let pulses = [];
+      let frameId = 0;
+      let lastTime = 0;
+
+      function rand(min, max) {
+        return min + Math.random() * (max - min);
+      }
+
+      function chooseColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+
+      function resize() {
+        const rect = hero.getBoundingClientRect();
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = Math.max(1, Math.round(rect.width));
+        height = Math.max(1, Math.round(rect.height));
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        canvas.style.width = width + "px";
+        canvas.style.height = height + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        buildNodes();
+        draw(0);
+      }
+
+      function buildNodes() {
+        const mobile = width < 760;
+        const count = mobile ? 38 : 78;
+        const denseStart = mobile ? 0.12 : 0.48;
+        nodes = Array.from({ length: count }, (_, index) => {
+          const mostlyRight = Math.random() < (mobile ? 0.42 : 0.74);
+          const xRatio = mostlyRight ? rand(denseStart, 0.98) : rand(0.06, 0.56);
+          const yRatio = rand(0.12, 0.9);
+          const color = chooseColor();
+          return {
+            x: xRatio * width,
+            y: yRatio * height,
+            baseX: xRatio * width,
+            baseY: yRatio * height,
+            vx: rand(-0.018, 0.018) * (mobile ? 0.65 : 1),
+            vy: rand(-0.014, 0.014) * (mobile ? 0.65 : 1),
+            radius: rand(1.5, index % 9 === 0 ? 3.4 : 2.7),
+            phase: rand(0, Math.PI * 2),
+            color
+          };
+        });
+
+        pulses = Array.from({ length: mobile ? 5 : 9 }, (_, index) => ({
+          t: Math.random(),
+          speed: rand(0.0012, 0.0024) * (reduceMotion.matches ? 0.08 : 1),
+          color: colors[index % colors.length],
+          pair: null
+        }));
+
+        pulses.forEach((pulse) => {
+          pulse.pair = pickPair();
+        });
+      }
+
+      function pickPair() {
+        if (nodes.length < 2) return null;
+        const maxDist = width < 760 ? 145 : 190;
+        for (let attempt = 0; attempt < 40; attempt += 1) {
+          const a = nodes[Math.floor(Math.random() * nodes.length)];
+          const candidates = nodes.filter((b) => {
+            if (a === b) return false;
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            return dist > 38 && dist < maxDist;
+          });
+          if (candidates.length) {
+            const b = candidates[Math.floor(Math.random() * candidates.length)];
+            return { a, b };
+          }
+        }
+        return null;
+      }
+
+      function update(delta) {
+        const motion = reduceMotion.matches ? 0.04 : 1;
+        nodes.forEach((node) => {
+          node.phase += 0.0014 * delta * motion;
+          node.x += node.vx * delta * motion;
+          node.y += node.vy * delta * motion;
+          const driftX = Math.sin(node.phase) * 8;
+          const driftY = Math.cos(node.phase * 0.8) * 6;
+          const targetX = node.baseX + driftX;
+          const targetY = node.baseY + driftY;
+          node.x += (targetX - node.x) * 0.012 * motion;
+          node.y += (targetY - node.y) * 0.012 * motion;
+        });
+
+        pulses.forEach((pulse) => {
+          if (!pulse.pair) pulse.pair = pickPair();
+          pulse.t += pulse.speed * delta;
+          if (pulse.t > 1) {
+            pulse.t = 0;
+            pulse.pair = pickPair();
+          }
+        });
+      }
+
+      function draw(time) {
+        const delta = lastTime ? Math.min(32, time - lastTime) : 16;
+        lastTime = time;
+        update(delta);
+        ctx.clearRect(0, 0, width, height);
+
+        const maxDist = width < 760 ? 145 : 190;
+        for (let i = 0; i < nodes.length; i += 1) {
+          for (let j = i + 1; j < nodes.length; j += 1) {
+            const a = nodes[i];
+            const b = nodes[j];
+            const dx = a.x - b.x;
+            const dy = a.y - b.y;
+            const dist = Math.hypot(dx, dy);
+            if (dist > maxDist) continue;
+            const rightBias = Math.max(a.x, b.x) / width;
+            const alpha = (1 - dist / maxDist) * (0.05 + rightBias * 0.2);
+            ctx.strokeStyle = `rgba(179, 200, 230, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.stroke();
+          }
+        }
+
+        pulses.forEach((pulse) => {
+          if (!pulse.pair) return;
+          const { a, b } = pulse.pair;
+          const x = a.x + (b.x - a.x) * pulse.t;
+          const y = a.y + (b.y - a.y) * pulse.t;
+          const fade = Math.sin(pulse.t * Math.PI);
+          ctx.fillStyle = `rgba(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b}, ${0.7 * fade})`;
+          ctx.shadowColor = `rgba(${pulse.color.r}, ${pulse.color.g}, ${pulse.color.b}, ${0.65 * fade})`;
+          ctx.shadowBlur = 16;
+          ctx.beginPath();
+          ctx.arc(x, y, 2.4 + 1.5 * fade, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        nodes.forEach((node) => {
+          const rightBias = node.x / width;
+          const alpha = 0.24 + rightBias * 0.58;
+          const pulse = 0.74 + Math.sin(node.phase * 2.2) * 0.26;
+          ctx.fillStyle = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, ${alpha})`;
+          ctx.shadowColor = `rgba(${node.color.r}, ${node.color.g}, ${node.color.b}, ${alpha * 0.55})`;
+          ctx.shadowBlur = 14 * pulse;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius * pulse, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        if (!reduceMotion.matches) {
+          frameId = requestAnimationFrame(draw);
+        }
+      }
+
+      resize();
+      if (!reduceMotion.matches) {
+        frameId = requestAnimationFrame(draw);
+      }
+
+      window.addEventListener("resize", () => {
+        cancelAnimationFrame(frameId);
+        lastTime = 0;
+        resize();
+        if (!reduceMotion.matches) frameId = requestAnimationFrame(draw);
+      });
+
+      reduceMotion.addEventListener("change", () => {
+        cancelAnimationFrame(frameId);
+        lastTime = 0;
+        buildNodes();
+        draw(0);
+        if (!reduceMotion.matches) frameId = requestAnimationFrame(draw);
+      });
+    }
+
+    initConstellation(constellationCanvas);
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+      });
+    }, { threshold: 0.12 });
+
+    revealBlocks.forEach((block) => revealObserver.observe(block));
+
+    const scoreObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+      });
+    }, { threshold: 0.35 });
+
+    scoreRows.forEach((row) => scoreObserver.observe(row));
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const activeId = entry.target.id;
+        navLinks.forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === "#" + activeId);
+        });
+      });
+    }, { rootMargin: "-38% 0px -54% 0px", threshold: 0 });
+
+    sections.forEach((section) => navObserver.observe(section));
+
+    window.addEventListener("load", () => {
+      requestAnimationFrame(() => {
+        revealBlocks.forEach((block) => {
+          const rect = block.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+            block.classList.add("is-visible");
+          }
+        });
+
+        scoreRows.forEach((row) => {
+          const rect = row.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+            row.classList.add("is-visible");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
